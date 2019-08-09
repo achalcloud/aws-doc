@@ -1,0 +1,100 @@
+SSH KEY BASE USER
+//////////////////////////////////////////////////////////////////////////////////
+1. useradd test
+2. su - test
+3. ssh-keygen -f rahul
+4. ll -a
+5. mkdir .ssh
+6. chmod 700 .ssh
+7. cp test.pub .ssh/authorized_keys
+8. chmod 600 .ssh/authorized_keys
+9. transfer .pem key to user.
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+---->> WINDOWS SERVER SHORTCUT 
+	TO OPEN USER CREATE window (lusrmgr.msc)(dra.msc) 
+-- Change expire password for RDP user (ctrl+alt+end)
+--  TO CHECK RDP DAYS -->> wmic /namespace:\\root\CIMV2\TerminalServices PATH Win32_TerminalServiceSetting WHERE (__CLASS !="") CALL GetGracePeriodDays
+
+
+
+
+--------------------------------------------------------------------------------------
+
+CREATE CSR IN WINDOWS
+open server manager --> go to tools -->> open IIS -->> expand server node -->> click on server certificates --> 
+click on create certificate request --> now open a pop up and fill it (command name =FQDN)--> next--> 
+select default setting and 2048 and next --> give file name and path
+
+NOW WE HAVE TWO TYPE OF FILE AFTER CSR validation
+1.  .crt
+2.  .p7b
+
+open MMC --?????????????
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+---->> LINUX SERVER SHORTCUTS
+--Webtectics website for php
+--Database dump command -"mysqldump -h 'string name' -u 'username' -p dbname > dbname.sql"
+--Database restore command - "mysql -h 'string name' -u username -p dbname < dbname.sql"
+--connecting with rds --->>> mysql -h endpoint -u username -p
+
+---------->>>>>> OCP Tool to create ftp -->setup tools --> single site setup --> iisw3svc-524 -->Ftp Quote-0
+EXAMPLE---username -- > (ftp.hpjosh.local|userweb524)
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////
+
+---------------------------------------SFTP -----------------------------------------------
+SFTP USER
+
+89  useradd -m -d /usr/share/nginx/html klinicappsftp 
+   90  cat /etc/passwd
+   91  grep apache /etc/passwd
+   92  grep ngnix /etc/passwd
+   93  ls -ld /usr/share/nginx/html 
+   94  chown -R apache:apache /usr/share/nginx/html
+   95  usermod -g apache klinicappsftp 
+   96  passwd klinicappsftp 
+   97  vim /etc/ssh/sshd_config
+	Match User apache
+	ForceCommand internal-sftp
+	PasswordAuthentication yes
+	ChrootDirectory /usr/share/nginx/html
+	PermitTunnel no
+	AllowAgentForwarding no
+	AllowTcpForwarding no
+	X11Forwarding no
+   98  systemctl restart sshd
+   99  curl ipinfo.io
+  100  sftp klinicappsftp@localhost
+  101  setfacl -m d:u:klinicappsftp:rwx,g:apache:rwx /usr/share/nginx/html
+  102  systemctl restart sshd
+  
+  
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+-------------MY SQL CLIENT 5.6-------------------
+
+#wget http://dev.mysql.com/get/Downloads/MySQL-5.6/MySQL-5.6.23-1.el7.x86_64.rpm-bundle.tar
+
+#tar -xvf MySQL-5.6.23-1.el7.x86_64.rpm-bundle.tar
+#sudo yum -y install MySQL-client-5.6.23-1.el7.x86_64.rpm
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+
+AWS FREE SSL 
+
+sudo yum install python2-certbot-apache
+
+sudo certbot --apache
+
+
