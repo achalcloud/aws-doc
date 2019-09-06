@@ -1,0 +1,12 @@
+Extend the partition in a partition table to fill available space
+
+(1) sudo growpart /dev/xvda 1 https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/expand-linux-partition.html
+
+Expand an ext2, ext3, ext4 file system
+
+(2)sudo resize2fs /dev/xvda1
+
+More on AWS recognizing expanded volume
+
+*****************************************************************************************************************
+lsblk -f    ---> for checking file systemm
