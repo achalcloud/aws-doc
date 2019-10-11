@@ -1,0 +1,16 @@
+For increase disk space on
+--------------------------
+[root@mac-db ec2-user]# df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/xvda1      9.8G  5.0G  4.8G  52% /
+devtmpfs        7.9G   68K  7.9G   1% /dev
+tmpfs           7.9G     0  7.9G   0% /dev/shm
+/dev/xvdg        50G   25G   23G  52% /mnt/mysql-------------for this
+/dev/xvdh       493G   40G  428G   9% /mnt/moodledata
+------
+1. Go to aws console and resize the volume .
+2. After optimizing 100%
+3. Login that linux server .
+4. run command "lsblk" to see the increased disk .
+5. run the command "resize2fs /dev/xvdf"
+6. run the command df -h 
